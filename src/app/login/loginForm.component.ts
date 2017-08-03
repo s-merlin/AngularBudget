@@ -4,13 +4,14 @@ import { Login } from './login';
 import { User } from './user';
 import {PassService} from '../app.service';
 import {MyService} from '../services/my.services';
+//import {HeaderComponent} from '../header/header.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './loginForm.component.html',
-  //template: `<app-header></app-header><app-login></app-login>`,
-  providers: [PassService/*, MyService*/]
+  providers: [PassService/*,HeaderComponent*/]
 })
+
 @Component({
   selector: 'app-header',
   templateUrl: '../header/header.component.html',
@@ -21,7 +22,8 @@ export class LoginFormComponent{
   retour:any[];
   useraffiche:any;
 
-  constructor(public router:Router, public passservice: PassService,public myservice: MyService){ }
+  constructor(public router:Router, public passservice: PassService,
+              public myservice: MyService/*,public headercomponent:HeaderComponent*/){ }
 
   ngOnInit() {
     //Verif du user
@@ -52,7 +54,11 @@ export class LoginFormComponent{
                                 this.retour[0].password,
                                 this.retour[0].role);
             this.myservice.setValue(user);
-            this.useraffiche = "heho";
+            /*this.headercomponent.ngDoCheck();
+            this.headercomponent.useraffiche = user;
+            this.headercomponent.page = 'nope';
+            this.headercomponent.rdm('accueil');*/
+            /*this.useraffiche = "heho";*/
             this.router.navigate(['/accueil']);
           }
         }

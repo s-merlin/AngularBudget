@@ -9,7 +9,10 @@ import {MyService} from '../services/my.services';
 })
 export class HeaderComponent implements OnInit {
   useraffiche:any;
-  constructor(public router:Router, public myservice: MyService) { }
+  page:string;
+  constructor(public router:Router, public myservice: MyService) { 
+    //this.useraffiche = this.myservice.getValue();
+  }
 
   ngOnInit() {
     //Verif user pour affichage du menu
@@ -17,13 +20,18 @@ export class HeaderComponent implements OnInit {
     this.useraffiche=verifuser;
   }
 
+  ngDoCheck(){
+    this.useraffiche = this.myservice.getValue();
+  }
+
   //redirectmenu
   rdm(param):void{
     //Verification du user pour affichage des onglets
     var verifuser = this.myservice.getValue();
+    this.page = param;
     this.useraffiche=verifuser;
     //Redirection vers menu demandé
     this.router.navigate(['/'+param]);
-}
+  }
 
 }

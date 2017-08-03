@@ -15,6 +15,13 @@ import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm.component';
 import { PersonneFormComponent } from './personne/personneForm.component';
 import { MyService } from './services/my.services';
+import { DepenseComponent } from './depense/depense.component';
+import { RentreeComponent } from './rentree/rentree.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { MoncompteComponent } from './moncompte/moncompte.component';
+import { BudgetComponent } from './budget/budget.component';
+import { DeconnexionComponent } from './deconnexion/deconnexion.component';
+import { SaisieComponent } from './saisie/saisie.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo:'/accueil', pathMatch: 'full'},
@@ -37,7 +44,14 @@ const appRoutes: Routes = [
     FooterComponent,
     LoginComponent,
     LoginFormComponent,
-    PersonneFormComponent
+    PersonneFormComponent,
+    DepenseComponent,
+    RentreeComponent,
+    UtilisateurComponent,
+    MoncompteComponent,
+    BudgetComponent,
+    DeconnexionComponent,
+    SaisieComponent
   ],
   imports: [
     BrowserModule,
