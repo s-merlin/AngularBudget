@@ -1,22 +1,67 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login } from './login';
+import { User } from './user';
+import {PassService} from '../app.service';
+import {MyService} from '../services/my.services';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './loginForm.component.html'
+  templateUrl: './loginForm.component.html',
+  //template: `<app-header></app-header><app-login></app-login>`,
+  providers: [PassService/*, MyService*/]
 })
+@Component({
+  selector: 'app-header',
+  templateUrl: '../header/header.component.html',
+  styleUrls: ['../header/header.component.css']
+})
+
 export class LoginFormComponent{
-  model = new Login('mon email','Password');
+  retour:any[];
+  useraffiche:any;
 
-    authentification():void{
-        let email = this.model.email;
-        let password = this.model.password;
-        //alert(email+' '+password);
-        //Appel au service de connexion base de donnée pour verifier le login mot de passe
+  constructor(public router:Router, public passservice: PassService,public myservice: MyService){ }
 
-        //si ok le log et l'envoie sur accueil
+  ngOnInit() {
+    //Verif du user
+    var verifuser = this.myservice.getValue();
+    if (verifuser != 'inconnu'){
+      this.useraffiche = verifuser;
+      this.router.navigate(['/accueil']);
+    }
+    else{
+    }
+  }
 
+  model = new Login('aaa','aaa');
+
+  authentification():void{
+      let email = this.model.email;
+      let password = this.model.password;
+
+      //Appel au service de connexion base de donnée pour verifier le login mot de passe
+      this.passservice.getPassword(email,password).subscribe((data) =>{ 
+        this.retour = data;
+        if(this.retour != undefined){
+          if(this.retour[0] != undefined){
+            document.getElementById("error").innerHTML = '';
+            var user = new User(this.retour[0].iduser,
+                                this.retour[0].login,
+                                this.retour[0].email,
+                                this.retour[0].password,
+                                this.retour[0].role);
+            this.myservice.setValue(user);
+            this.useraffiche = "heho";
+            this.router.navigate(['/accueil']);
+          }
+        }
         //si ko message d'erreur et on le laisse ici
-}
+        else{
+          let err = document.getElementById("error");
+          err.innerHTML = 'Utilisateur inconnu !';
+        }
+      });
+  }
 
 }

@@ -17,12 +17,13 @@ export class LoginComponent implements OnInit {
   }
 
   toto():void{
-    var Passauth:any = this.passService.getPassword().subscribe((data) => this.password = data);
+    /*var Passauth:any = this.passService.getPassword().subscribe((data) => this.password = data);
     alert(Passauth.forEach(element => {
       return element.PassLogin;
     }));
 
       alert(Passauth[0]);
+      */
     //alert(Passauth);
     //console.log('hi');
 }

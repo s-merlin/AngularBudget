@@ -2,15 +2,16 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-<ul>
-  <li><a href="/">Accueil</a></li>
-  <li><a href="/depense">Depenses</a></li>
-  <li><a href="/rentree">Rentrées</a></li>
-  <li><a href="/gestion">Gestion</a></li>
-  <li><a href="/deco">Deconnexion</a></li>
-  <li><a href="/contact">Contact</a></li>
-  <li><a href="/cv">CV</a></li>
-  <li><a href="/fff">Not Found !</a></li>
-  <li><a href="/login">Login</a></li>
-  <li><a href="/personne">Personne</a></li>
+<ul > 
+  <li><button (click)="rdm('accueil')" type="submit">Accueil</button></li>
+  <li *ngIf='test=="icgi"'><button (click)="rdm('depense')" type="submit">{{test}}</button></li>
+  <li><button (click)="rdm('rentree')" type="submit">Rentrées</button></li>
+  <li><button (click)="rdm('gestion')" type="submit">Gestion</button></li>
+  <li><button (click)="rdm('deconnexion')" type="submit">Deconnexion</button></li>
+  <li><button (click)="rdm('contact')" type="submit">Contact</button></li>
+  <li *ngIf='useraffiche.role=="parent"'><button (click)="rdm('cv')" type="submit">CV</button></li>
+  <li><button (click)="rdm('fff')" type="submit">Not Found !</button></li>
+  <li><button (click)="rdm('login')" type="submit">Login</button></li>
+  <li><button (click)="rdm('personne')" type="submit">Personne</button></li>
+  <li *ngIf='useraffiche!="inconnu"'><button (click)="rdm('personne')" type="submit">Bonjour {{useraffiche.login}}({{useraffiche.role}})</button></li>
 </ul>

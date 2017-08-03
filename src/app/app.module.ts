@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/loginForm.component';
 import { PersonneFormComponent } from './personne/personneForm.component';
+import { MyService } from './services/my.services';
 
 const appRoutes: Routes = [
   {path: '', redirectTo:'/accueil', pathMatch: 'full'},
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [MyService],
   bootstrap: [AppComponent]
 })
 
