@@ -46,6 +46,24 @@ export class PassService{
     }
 }
 
+@Injectable()
+export class UserService{
+    passUrl = 'http://127.0.0.1:3000/user';
+    user:any;
+    constructor(public http: Http){};
+    
+    getUsers()
+    {
+        return this.http.get(this.passUrl)
+                        .map(res => res.json());
+    }
+
+    saveUser(model)
+    {
+        return this.http.post(this.passUrl+'/',model);
+    }
+}
+
 export class appService{
     getApp()
     {

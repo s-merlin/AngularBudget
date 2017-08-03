@@ -7,8 +7,9 @@
   <li><button (click)="rdm('depense')" type="submit">Depense</button></li>
   <li><button (click)="rdm('rentree')" type="submit">Rentrées</button></li>
   <li><button (click)="rdm('saisie')" type="submit">Saisie</button></li>
+  <li><button (click)="rdm('budget')" type="submit">Budget</button></li>
   <li *ngIf='useraffiche.role=="parent"'><button (click)="rdm('budget')" type="submit">budget</button></li>
-  <li *ngIf='useraffiche.role=="admin"'><button (click)="rdm('users')" type="submit">Utilisateur</button></li>
+  <li *ngIf='useraffiche.role=="admin"'><button (click)="rdm('utilisateur')" type="submit">Utilisateur</button></li>
   <li *ngIf='useraffiche!="inconnu"'><button (click)="rdm('moncompte')" type="submit">{{useraffiche.login}}({{useraffiche.role}})</button></li>
   <li><button (click)="rdm('deconnexion')" type="submit">Deconnexion</button></li>
 </ul>

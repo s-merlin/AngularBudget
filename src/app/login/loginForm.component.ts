@@ -4,7 +4,6 @@ import { Login } from './login';
 import { User } from './user';
 import {PassService} from '../app.service';
 import {MyService} from '../services/my.services';
-//import {HeaderComponent} from '../header/header.component';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +22,7 @@ export class LoginFormComponent{
   useraffiche:any;
 
   constructor(public router:Router, public passservice: PassService,
-              public myservice: MyService/*,public headercomponent:HeaderComponent*/){ }
+              public myservice: MyService){ }
 
   ngOnInit() {
     //Verif du user
@@ -54,11 +53,6 @@ export class LoginFormComponent{
                                 this.retour[0].password,
                                 this.retour[0].role);
             this.myservice.setValue(user);
-            /*this.headercomponent.ngDoCheck();
-            this.headercomponent.useraffiche = user;
-            this.headercomponent.page = 'nope';
-            this.headercomponent.rdm('accueil');*/
-            /*this.useraffiche = "heho";*/
             this.router.navigate(['/accueil']);
           }
         }

@@ -26,10 +26,14 @@ import { SaisieComponent } from './saisie/saisie.component';
 const appRoutes: Routes = [
   {path: '', redirectTo:'/accueil', pathMatch: 'full'},
   {path: 'accueil', component: AccueilComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'cv', component: CVComponent},
+  {path: 'rentree', component: RentreeComponent},
+  {path: 'depense', component: DepenseComponent},
+  {path: 'saisie', component: SaisieComponent},
+  {path: 'budget', component: BudgetComponent},
+  {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'login', component: LoginFormComponent},
-  {path: 'personne', component: PersonneFormComponent},
+  {path: 'moncompte', component: MoncompteComponent},
+  {path: 'deconnexion', component: DeconnexionComponent},
   {path: '**', component: PageNotFoundComponent},
 ]
 
