@@ -57,10 +57,25 @@ export class UserService{
         return this.http.get(this.passUrl)
                         .map(res => res.json());
     }
+    
+    getUser(iduser)
+    {
+        return this.http.get(this.passUrl+'/'+iduser)
+                        .map(res => res.json());
+    }
 
     saveUser(model)
     {
         return this.http.post(this.passUrl+'/',model);
+    }
+
+    delUser(iduser)
+    {
+        return this.http.delete(this.passUrl+'/'+iduser);
+    }
+
+    updateUser(iduser,model){
+        return this.http.put(this.passUrl+'/'+iduser,model);
     }
 }
 

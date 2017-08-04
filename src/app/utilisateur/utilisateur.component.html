@@ -1,55 +1,63 @@
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
-<div class="error" name="error" id="error">
-</div>
-    <h1><span class="fa"></span> Utilisateur</h1>
-    <!-- User FORM -->
-    <form action="/" method="get">
-        <div class="form-group">
-            <label>Login</label>
-            <input type="text" class="form-control" name="login" 
-            required [(ngModel)] = "model.login">
-        </div>
-        <div class="form-group">
-            <label>Role</label>
-            <select class=form-control name="role" required [(ngModel)] = "model.role">
-              <option value=enfant>Enfant</option>
-              <option value=parent>Parent</option>
-              <option value=admin>Admin</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email" 
-            required [(ngModel)] = "model.email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password"
-            required [(ngModel)] = "model.password">
-        </div>
-
-        <button (click)="valideruser()" type="submit" class="btn btn-warning btn-lg" >Enregistrer</button>
-    </form>
-</div>
-<div class="result" name="result" id="result">
-</div>
+    <div class="error" name="error" id="error">
+    </div>
+        <h1><span class="fa"></span> Utilisateur</h1>
+        <!-- User FORM -->
+        <form action="/" method="get">
+            <div class="form-group" hidden>
+                <label>ID</label>
+                <input type="text" class="form-control" name="iduser" id="iduser"
+                 [(ngModel)] = "model.iduser">
+            </div>
+            <div class="form-group">
+                <label>Login</label>
+                <input type="text" class="form-control" name="login" id="login"
+                required [(ngModel)] = "model.login">
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <select class=form-control name="role" id="role" required [(ngModel)] = "model.role">
+                <option value=enfant>Enfant</option>
+                <option value=parent>Parent</option>
+                <option value=admin>Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" id="email" 
+                required [(ngModel)] = "model.email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" id="password"
+                required [(ngModel)] = "model.password">
+            </div>
+            <button (click)="valideruser()" type="submit" class="btn btn-warning btn-lg" id="valider" >Enregistrer</button>
+            <button (click)="updateuser()" type="submit" class="btn btn-warning btn-lg" id="update" style="display: none;">Modifier</button>
+        </form>
+    </div>
+    <div class="result" name="result" id="result">
+    </div>
 </div>
 <div>
-<table >
+<table align="center" width="50%" border="1px">
 <tr>
   <td>id</td>
   <td>email</td>
   <td>login</td>
   <td>role</td>
+  <td>supprimer</td>
+  <td>editer</td>
 </tr>
-<tr *ngFor = 'let usr of userlist'>
+<tr *ngFor = 'let usr of userlist' id=user{{usr.iduser}}>
   <td>{{usr.iduser}}</td >
   <td>{{usr.email}}</td>
   <td>{{usr.login}}</td>
   <td>{{usr.role}}</td>
-  <td><button onclick="go()"> - </button></td>
+  <td><button (click)="deluser(usr.iduser)" type="submit"> - </button></td>
+  <td><button (click)="recupuser(usr.iduser)" type="submit"> + </button></td>
 </tr>
 </table>
 </div>
