@@ -1,3 +1,57 @@
-<p>
-  depense works!
-</p>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="error" name="error" id="error">
+    </div>
+        <h1><span class="fa"></span> Depense</h1>
+        <!-- Depense FORM -->
+        <form action="/" method="get">
+            <div class="form-group" hidden>
+                <label>ID</label>
+                <input type="text" class="form-control" name="iddepense" id="iddepense"
+                 [(ngModel)] = "model.iddepense">
+            </div>
+            <div class="form-group">
+                <label>Montant</label>
+                <input type="text" class="form-control" name="montant" id="montant"
+                required [(ngModel)] = "model.montant">
+            </div>
+            <div class="form-group">
+                <label>Poste</label>
+                <select class=form-control name="poste" id="poste" required [(ngModel)] = "model.poste" >
+                <option *ngFor = 'let pos of postelist' value={{pos.idposte}}>{{pos.nom}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Personne</label>
+                <select class=form-control name="personne" id="personne" required [(ngModel)] = "model.personne" >
+                <option *ngFor = 'let per of utilisateurlist' value={{per.iduser}}>{{per.email}}</option>
+                </select>
+            </div>
+            <button (click)="validerdepense()" type="submit" class="btn btn-warning btn-lg" id="valider" >Enregistrer</button>
+            <button (click)="updatedepense()" type="submit" class="btn btn-warning btn-lg" id="update" style="display: none;">Modifier</button>
+        </form>
+    </div>
+    <div class="result" name="result" id="result">
+    </div>
+</div>
+<div>
+<table align="center" width="50%" border="1px">
+<tr>
+  <td>id</td>
+  <td>montant</td>
+  <td>poste</td>
+  <td>personne</td>
+  <td>supprimer</td>
+  <td>editer</td>
+</tr>
+<tr *ngFor = 'let dep of depenselist' id=dep{{dep.iddepense}}>
+  <td>{{dep.iddepense}}</td >
+  <td>{{dep.montant}}</td>
+  <td>{{dep.poste}}</td>
+  <td>{{dep.personne}}</td>
+  <td><button (click)="deldepense(dep.iddepense)" type="submit"> - </button></td>
+  <td><button (click)="recupdepense(dep.iddepense)" type="submit"> + </button></td>
+</tr>
+</table>
+</div>

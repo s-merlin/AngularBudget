@@ -47,6 +47,47 @@ export class PassService{
 }
 
 @Injectable()
+export class DepenseService{
+    depUrl = 'http://127.0.0.1:3000/depense';
+    posteUrl = 'http://127.0.0.1:3000/poste';
+    depense:any;
+    constructor(public http:Http){};
+
+    getPostes()
+    {
+        return this.http.get(this.posteUrl)
+                        .map(res => res.json());
+    }
+
+    getDepenses()
+    {
+        return this.http.get(this.depUrl)
+                        .map(res => res.json());
+    }
+
+    getDepense(iddepense)
+    {
+        return this.http.get(this.depUrl+'/'+iddepense)
+                        .map(res => res.json());
+    }
+
+    saveDepense(model)
+    {
+        return this.http.post(this.depUrl+'/',model);
+    }
+
+    delDepense(iddepense)
+    {
+        return this.http.delete(this.depUrl+'/'+iddepense);
+    }
+
+    updateDepense(iddepense,model){
+        return this.http.put(this.depUrl+'/'+iddepense,model);
+    }
+
+}
+
+@Injectable()
 export class UserService{
     passUrl = 'http://127.0.0.1:3000/user';
     user:any;
